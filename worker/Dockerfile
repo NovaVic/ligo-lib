@@ -31,7 +31,7 @@ RUN pip install -r /worker/requirements.txt \
 #this one would try to get a specific version of LigoLib
 #experimental
 
-RUN pip3 install   --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple  LigoLib==${LIB_VERSION}
+RUN pip3 install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple LigoLib==${LIB_VERSION}
 
 RUN echo 'django:x:999:999:django:/:/bin/sh' >> /etc/passwd
 
