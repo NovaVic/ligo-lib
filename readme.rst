@@ -40,22 +40,22 @@ To install the latest version of library from Test PyPI simply use:
 
 .. code:: sh
 
-    pip3 install --no-cache-dir --upgrade --extra-index-url https://testpypi.python.org/pypi LigoLib 
+    pip3 install --no-cache-dir --upgrade --extra-index-url https://testpypi.python.org/pypi LigoLib
 
-This one would try to get a specific version of LigoLib 
-
-.. code:: sh
-
-    pip3 install --no-cache-dir --extra-index-url https://testpypi.python.org/pypi LigoLib==0.5 
-
-
-This one would not always try to see beyond what is previously cached    
+This one would try to get a specific version of LigoLib
 
 .. code:: sh
-    pip3 install --extra-index-url https://testpypi.python.org/pypi LigoLib   
- 
 
-Tests 
+    pip3 install --no-cache-dir --extra-index-url https://testpypi.python.org/pypi LigoLib==0.5
+
+
+This one would not always try to see beyond what is previously cached
+
+.. code:: sh
+    pip3 install --extra-index-url https://testpypi.python.org/pypi LigoLib
+
+
+Tests
 ---------------
 
 The **ligo-lib**  tests depend on:
@@ -68,14 +68,14 @@ To test the source code of the library as a contributing developer go to the roo
 
 .. code:: sh
 
-    python3 setup.py test  
+    python3 setup.py test
 
 test is set as an alias to pytest ( as specified in the setup.cfg file)
 
 
 By default, all tests are configured to run. However, some tests will take considerable amount of time.
 To skip running the time consuming tests in the library, open the pytest.ini file then remove the comment symbol (#) from  the add options block with
- -m not slow option specified and comment out the options block that does not have the "-m not slow" option specified.  Save the ini file and then execute 
+ -m not slow option specified and comment out the options block that does not have the "-m not slow" option specified.  Save the ini file and then execute
 the above (python3 setup.py test) command:
 
 
