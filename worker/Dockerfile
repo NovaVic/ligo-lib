@@ -4,8 +4,10 @@ ARG LIB_VERSION
 #Docker file that pulls LigoLib package from PyPI (instead of copying source code) and
 #build docker image for celery worker(s)
 
-
 ENV LIB_VERSION=${LIB_VERSION}
+
+#Docker file that pulls LigoLib package from PyPI (instead of copying source code) and
+#build docker image for celery worker(s)
 
 # Docker file for forming local/dev Django container
 RUN mkdir -p /user_data/media/datasets /user_data/media/linking
@@ -17,6 +19,7 @@ RUN chmod -R 0777 /user_data
 COPY ./link-server /worker
 RUN pip install -r /worker/requirements.txt
 RUN echo $LIB_VERSION
+
 # Install Data Linking Packages
 
 #this one would not always try to see beyond what is previously cached
