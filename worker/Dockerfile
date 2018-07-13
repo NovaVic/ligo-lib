@@ -2,6 +2,9 @@ FROM python:3.6
 ENV PYTHONUNBUFFERED 1
 ARG LIB_VERSION
 
+
+#***this Docker file should be used from one directory level up
+
 #Docker file that pulls LigoLib package from PyPI (instead of copying source code) and
 #build docker image for celery worker(s)
 
@@ -13,11 +16,12 @@ RUN mkdir /tmp/django-email-dev
 # Ownership change not a requirement for local/dev docker environments
 RUN chmod -R 0777 /user_data
 
-RUN mkdir /dist
-COPY ../dist/*.whl  /dist/
+
+#the dockerfile should be used from one directory level up for this copy to work
+COPY ./dist /dist
 
 # Install Celery Requirements
-COPY ./link-server /worker
+COPY ./worker/link-server /worker
 RUN pip install -r /worker/requirements.txt \
  && echo $LIB_VERSION
 
@@ -36,10 +40,12 @@ RUN pip install -r /worker/requirements.txt \
 
 #RUN pip3 install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple LigoLib==${LIB_VERSION}
 
-#Installed LigoLib from locally formed wheel distribution
-#for could be combined with previous copy and run statements; however keeping it separate for ease of commenting out and uncommenting
-#one of the installation choices of ligolib package or the other
-#removing wheel file and ftemporary package folder after installation
+
+#The follwoing command could be combined with previous copy and run statements. 
+#However keeping it separate for ease of commenting out and uncommenting
+#one of the installation choices of ligolib package or the other.
+#Installing LigoLib from locally formed wheel distribution.
+#Removing wheel file and temporary package folder after installation
 
 RUN pip3 install /dist/*.whl \
     && rm -rf /dist/  
