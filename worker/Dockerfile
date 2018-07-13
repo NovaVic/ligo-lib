@@ -18,7 +18,7 @@ RUN chmod -R 0777 /user_data
 
 
 #the dockerfile should be used from one directory level up for this copy to work
-COPY ./dist /dist
+COPY ./dist/ /dist
 
 # Install Celery Requirements
 COPY ./worker/link-server /worker
@@ -47,8 +47,9 @@ RUN pip install -r /worker/requirements.txt \
 #Installing LigoLib from locally formed wheel distribution.
 #Removing wheel file and temporary package folder after installation
 
+
 RUN pip3 install /dist/*.whl \
-    && rm -rf /dist/  
+    && rm -rf /dist/
 
 RUN echo 'django:x:999:999:django:/:/bin/sh' >> /etc/passwd
 
