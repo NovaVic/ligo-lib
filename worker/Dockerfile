@@ -18,7 +18,7 @@ RUN chmod -R 0777 /user_data
 
 
 #the dockerfile should be used from one directory level up for this copy to work
-COPY ./dist/ /dist
+COPY dist/ /dist
 
 # Install Celery Requirements
 COPY ./worker/link-server /worker
