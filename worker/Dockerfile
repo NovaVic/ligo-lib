@@ -13,7 +13,7 @@ RUN mkdir /tmp/django-email-dev
 # Ownership change not a requirement for local/dev docker environments
 RUN chmod -R 0777 /user_data
 
-RUM mkdir /dist
+RUN mkdir /dist
 COPY ../dist/*.whl  /dist/
 
 # Install Celery Requirements
